@@ -31,7 +31,13 @@ function ScoreState:render()
     love.graphics.printf('Oof! You lost!', 0, 64, VIRTUAL_WIDTH, 'center')
 
     love.graphics.setFont(mediumFont)
-    love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
-
+	if(self.score >= 3) then 
+		love.graphics.draw(love.graphics.newImage('medal.png'), self.x, self.y)
+		love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
+		love.graphics.printf('Congratulations for winning the medal!', 0, 120, VIRTUAL_WIDTH, 'center')
+	else 
+		love.graphics.printf('Score: ' .. tostring(self.score), 0, 100, VIRTUAL_WIDTH, 'center')
+	end
+	
     love.graphics.printf('Press Enter to Play Again!', 0, 160, VIRTUAL_WIDTH, 'center')
 end
